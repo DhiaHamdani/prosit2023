@@ -1,16 +1,23 @@
+package tn.esprit.gestionZoo.entities;
+
 public class Zoo {
 
     static final int NUMBER_OF_CAGES = 25;
-    Animal[] animals;
-    String name, city;
-    int nbrAnimals;
+    private Animal[] animals;
+    private String name, city;
+    private int nbrAnimals;
 
     public Zoo() {
     }
 
     public Zoo(String name, String city) {
         animals = new Animal[NUMBER_OF_CAGES];
-        this.name = name;
+        if ( name=="") {
+            System.out.println("ecrire le nom");
+        }
+        else{
+            this.name = name;
+        }
         this.city = city;
     }
 
@@ -24,17 +31,17 @@ public class Zoo {
         System.out.println("Name: " + name + ", City: " + city + ", N° Cages: " + NUMBER_OF_CAGES + " N° animals: " + nbrAnimals);
     }
 
-    boolean addAnimal(Animal animal) {
+    public boolean addAnimal(Animal animal) {
         if (searchAnimal(animal) != -1)
             return false;
-        if (nbrAnimals == NUMBER_OF_CAGES)
+        if (isZooFull())
             return false;
         animals[nbrAnimals] = animal;
         nbrAnimals++;
         return true;
     }
 
-    boolean removeAnimal(Animal animal) {
+    public boolean removeAnimal(Animal animal) {
         int indexAnimal = searchAnimal(animal);
         if (indexAnimal == -1)
             return false;
@@ -46,17 +53,17 @@ public class Zoo {
         return true;
     }
 
-    void displayAnimals() {
+    public void displayAnimals() {
         System.out.println("List of animals of " + name + ":");
         for (int i = 0; i < nbrAnimals; i++) {
             System.out.println(animals[i]);
         }
     }
 
-    int searchAnimal(Animal animal) {
+    public int searchAnimal(Animal animal) {
         int index = -1;
         for (int i = 0; i < nbrAnimals; i++) {
-            if (animal.name == animals[i].name)
+            if (animal.getName() == animals[i].getName())
                 return i;
         }
         return index;
@@ -69,5 +76,37 @@ public class Zoo {
     @Override
     public String toString() {
         return "Name: " + name + ", City: " + city + ", N° Cages: " + NUMBER_OF_CAGES + " N° animals: " + nbrAnimals;
+    }
+
+    public Animal[] getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Animal[] animals) {
+        this.animals = animals;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNbrAnimals() {
+        return nbrAnimals;
+    }
+
+    public void setNbrAnimals(int nbrAnimals) {
+        this.nbrAnimals = nbrAnimals;
     }
 }
