@@ -13,4 +13,12 @@ public class Dolphin extends Aquatic {
     public void swim(){
         System.out.println(" This dolphin is swimming. ");
     }
+
+    public float getSwimmingSpeed() {
+        return swimmingSpeed;
+    }
+
+    public void setSwimmingSpeed(float swimmingSpeed) {
+        this.swimmingSpeed = swimmingSpeed;
+    }
 }

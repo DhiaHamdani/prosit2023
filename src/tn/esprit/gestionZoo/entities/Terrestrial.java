@@ -7,4 +7,12 @@ public class Terrestrial extends Animal {
         super(family, name, age, isMammal);
         this.nbrLegs=nbrLegs;
     }
+
+    public int getNbrLegs() {
+        return nbrLegs;
+    }
+
+    public void setNbrLegs(int nbrLegs) {
+        this.nbrLegs = nbrLegs;
+    }
 }

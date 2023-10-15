@@ -13,4 +13,12 @@ public class Aquatic extends Animal{
     public void swim(){
          System.out.println(" This aquatic animal is swimming. ");
     }
+
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
+    }
 }
