@@ -6,60 +6,25 @@ import tn.esprit.gestionZoo.entities.*;
 public class ZooManagement {
 
     public static void main(String[] args) {
-        Animal lion = new Animal("Carnivore","Lion",21, true);
-        Zoo myZoo = new Zoo("Wildlife Park", "Ariana");
-        Zoo notMyZoo = new Zoo("WaterPark", "Siliana");
+    Zoo Z1 = new Zoo("echkel", "Bizerte");
+    Penguin P1=new Penguin("flou", "claude", 12,true, "ocean",50.3f);
+        Penguin P3=new Penguin("flou", "red", 22,true, "ocean",14.8f);
+        Penguin P2=new Penguin("flou", "red", 22,true, "ocean",82.7f);
+        Dolphin D1=new Dolphin("pouf", "claude", 12,true, "ocean",70.3f);
 
-
-        Animal dog = new Animal("Canine", "Snoopy", 2, true);
-
-
-        System.out.println(myZoo.addAnimal(lion));
-        System.out.println(myZoo.addAnimal(dog));
-
-        myZoo.displayAnimals();
-
-        System.out.println(myZoo.searchAnimal(dog));
-        Animal dog2 = new Animal("Canine", "lll", 2, true);
-        System.out.println(myZoo.searchAnimal(dog2));
-
-        //   System.out.println(myZoo.removeAnimal(dog));
-        myZoo.displayAnimals();
-
-
-        System.out.println(myZoo);
-
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(dog);
-        myZoo.addAnimal(dog2);
-        myZoo.displayAnimals();
-        System.out.println("a" + myZoo.removeAnimal(lion));
-        myZoo.displayAnimals();
-        System.out.println("a" + myZoo.removeAnimal(dog2));
-        myZoo.displayAnimals();
-        System.out.println("a" + myZoo.removeAnimal(dog));
-        myZoo.displayAnimals();
-
-//        System.out.println(tn.esprit.gestionZoo.main.entities.Zoo.comparerZoo(myZoo, notMyZoo));
-//        System.out.println(myZoo.isZooFull());
-
-        // Prosit 5
-
-        Aquatic Aquatic_D = new Aquatic("balene" , "leo", 5, true, "ocean");
-        Dolphin Dolphin_D = new Dolphin("poisson" , "neon", 7, true, "ocean", 40.6f);
-        Penguin Penguin_D = new Penguin("balene" , "hito", 5, true, "ocean", 13.9f);
-        Terrestrial Terrestrial_D = new Terrestrial("singe" , "ohoo", 12, true, 4);
-
-        System.out.println(Aquatic_D.toString());
-        System.out.println(Dolphin_D.toString());
-        System.out.println(Penguin_D.toString());
-
-
-
-        Aquatic_D.swim();
-        Dolphin_D.swim();
-        Penguin_D.swim();      // le penguin n'a pas de methode swim() donc il hérite celle de la classe mere aquatic
+        Z1.addAquaticAnimal(P1);
+        Z1.addAquaticAnimal(P2);
+        Z1.addAquaticAnimal(P3);
+        Z1.addAquaticAnimal(D1);
+    for (int i=0;i< Z1.getNbrAquatic();i++) {
+        Z1.aquaticAnimals[i].swim();
+    }
+        System.out.println(Z1.maxPenguinSwimmingDepth());
+        Z1.displayNumberOfAquaticsByType();
+        System.out.println(D1.equals(P1));
+        System.out.println(P2.equals(P3));
 
     }
+
 
 }

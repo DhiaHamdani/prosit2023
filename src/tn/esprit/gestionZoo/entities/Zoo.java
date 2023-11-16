@@ -2,10 +2,13 @@ package tn.esprit.gestionZoo.entities;
 
 public class Zoo {
 
+    public Aquatic[] aquaticAnimals = new Aquatic[10];
+
     static final int NUMBER_OF_CAGES = 25;
     private Animal[] animals;
     private String name, city;
     private int nbrAnimals;
+    private int nbrAquatic;
 
     public Zoo() {
     }
@@ -19,6 +22,11 @@ public class Zoo {
             this.name = name;
         }
         this.city = city;
+    }
+
+    public void addAquaticAnimal(Aquatic aquatic){
+        aquaticAnimals[nbrAquatic]=aquatic;
+        nbrAquatic++;
     }
 
     static Zoo comparerZoo(Zoo z1, Zoo z2) {
@@ -73,6 +81,33 @@ public class Zoo {
         return nbrAnimals == NUMBER_OF_CAGES;
     }
 
+    public float maxPenguinSwimmingDepth(){
+        float max=0f;
+        for (int i=0;i<nbrAquatic;i++){
+            if (aquaticAnimals[i] instanceof Penguin penguin) {
+                if(max<penguin.getSwimmingDepth()) {
+                    max=penguin.getSwimmingDepth();
+                }
+            }
+            }
+        return max;
+        }
+        public void displayNumberOfAquaticsByType(){
+            int nbrPenguin = 0;
+            int nbrDolphin = 0;
+            for (int i=0; i<nbrAquatic;i++){
+                if (aquaticAnimals[i] instanceof Penguin){
+                    nbrPenguin++;
+                }
+                if (aquaticAnimals[i] instanceof Dolphin){
+                    nbrDolphin++;
+                }
+            }
+            System.out.println("nombre de Penguins :" + nbrPenguin +"\n nombre de Dolphins : " + nbrDolphin);
+        }
+
+
+
     @Override
     public String toString() {
         return "Name: " + name + ", City: " + city + ", N° Cages: " + NUMBER_OF_CAGES + " N° animals: " + nbrAnimals;
@@ -108,5 +143,15 @@ public class Zoo {
 
     public void setNbrAnimals(int nbrAnimals) {
         this.nbrAnimals = nbrAnimals;
+    }
+
+
+
+    public int getNbrAquatic() {
+        return nbrAquatic;
+    }
+
+    public void setNbrAquatic(int nbrAquatic) {
+        this.nbrAquatic = nbrAquatic;
     }
 }
